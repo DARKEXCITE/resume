@@ -14,14 +14,12 @@
 
 /* Phenomena-700 - latin_cyrillic */
 @font-face {
-    font-family: 'Phenomena';
+    font-family: 'Buyan';
     font-style: normal;
     font-weight: 700;
-    src: local('Phenomena Bold'),
-    local('Phenomena-Bold'),
-    url('assets/fonts/Phenomenabold.woff2') format('woff2'),
-    url('assets/fonts/Phenomenabold.woff') format('woff'),
-    url('assets/fonts/Phenomenabold.ttf') format('truetype');
+    src: local('Buyan Bold'),
+    local('Buyan-Bold'),
+    url('assets/fonts/buyan.ttf') format('truetype');
 }
 
 *, *::before, *::after {
@@ -137,7 +135,7 @@ html {
 
 
 a:focus {
-    outline: thin dotted;
+    outline: 0;
 }
 
 
@@ -298,11 +296,174 @@ textarea {
     --white: white;
     --dark: #1b1b1b;
     --cyan: #08F5D1;
+
+    --buyan: 'Buyan', sans-serif;
+    --montserrat: 'Montserrat', sans-serif;
+
+    --bold: 700;
+    --thin: 300;
 }
 
 body {
     background-color: var(--dark);
     color: var(--white);
+    font: var(--thin) 30px/36px var(--montserrat);
+}
 
-    font: 300 30px/36px 'Montserrat', sans-serif;
+.text-blue {
+    color: var(--cyan);
+}
+
+.name {
+    display: block;
+    font-family: var(--buyan);
+    font-weight: var(--bold);
+    font-size: 55px;
+    line-height: 1;
+    letter-spacing: 0.05em;
+    color: var(--white);
+}
+
+.profession {
+    font-size: 88px;
+    line-height: 1;
+    font-family: var(--buyan);
+    font-weight: var(--bold);
+    text-shadow: 0 0 5px var(--cyan);
+}
+
+.heading {
+    font-family: var(--buyan);
+    font-weight: var(--bold);
+    font-size: 50px;
+    line-height: 1;
+    letter-spacing: 0.03em;
+    color: var(--cyan);
+    margin-bottom: 40px;
+}
+
+.section-title {
+    margin-left: 100px;
+}
+
+.simple__list > li {
+    margin-bottom: 30px;
+    display: flex;
+    align-items: center;
+    max-width: 1400px;
+}
+
+.simple__list > li::before {
+    content: '';
+    display: block;
+    flex: 0 0 80px;
+    width: 80px;
+    height: 1px;
+    background-color: var(--cyan);
+    margin-right: 20px;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    padding: 20px 0;
+    margin-bottom: 150px;
+}
+
+.section {
+    margin-bottom: 150px;
+}
+
+.arrows-to-right {
+    margin-right: 50px;
+}
+
+.stack {
+    background: url("assets/svg/bg-stack.svg") no-repeat center/contain;
+    margin-bottom: 90px;
+}
+
+.about-me {
+    background: url("assets/svg/bg-about-me.svg") no-repeat center/contain;
+}
+
+.projects {
+    background: url("assets/svg/bg-portfolio.svg") no-repeat center/contain;
+    margin-top: 50px;
+    margin-bottom: 210px;
+    padding-bottom: 140px;
+}
+
+.definition {
+    display: flex;
+    margin-bottom: 35px;
+}
+
+.definition > dt {
+    display: flex;
+    flex: 0 0 auto;
+    align-items: center;
+    margin-right: 100px;
+    min-width: 355px;
+}
+
+.definition > dt > a {
+    color: var(--white);
+}
+
+.definition > dt > a::after {
+    content: '';
+    display: block;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background-color: var(--white);
+}
+
+.definition > dt::before {
+    content: '';
+    display: block;
+    flex: 0 0 80px;
+    width: 80px;
+    height: 1px;
+    background-color: var(--cyan);
+    margin-right: 20px;
+}
+
+.definition > dd {
+    max-width: 1045px;
+}
+
+.footer__container {
+    display: flex;
+    margin-left: 100px;
+}
+
+.contacts {
+    margin-right: 95px;
+}
+
+.contacts__list > li {
+    margin-bottom: 30px;
+    letter-spacing: 0.03em;
+    text-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.contacts__list a {
+    color: var(--white);
+}
+
+.socials__list {
+    display: flex;
+}
+
+.socials__list > li {
+    margin-right: 20px;
+}
+
+.data {
+    font-size: 18px;
+    text-align: center;
+    padding: 210px 0 45px;
 }
