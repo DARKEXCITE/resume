@@ -353,6 +353,10 @@ body {
     max-width: 1400px;
 }
 
+.simple__list > li > a {
+    color: white;
+}
+
 .simple__list > li::before {
     content: '';
     display: block;
@@ -390,7 +394,7 @@ body {
 .projects {
     background: url("assets/svg/bg-portfolio.svg") no-repeat center/contain;
     margin-top: 50px;
-    margin-bottom: 210px;
+    margin-bottom: 110px;
     padding-bottom: 140px;
 }
 
