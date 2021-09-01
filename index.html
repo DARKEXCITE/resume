@@ -1,133 +1,389 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-   <meta charset="UTF-8">
-<!--   <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">-->
+   <meta charset="UTF-8"/>
+   <!--   <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">-->
    <title>Full-Stack разработчик - Мясищев Оскар</title>
-   <link rel="stylesheet" href="style.css">
+   <link rel="stylesheet" href="tailwind.css" type="text/css"/>
+   <link rel="stylesheet" href="style-v2.css" type="text/css"/>
 </head>
 <body>
-   <header class="header">
-      <img src="assets/svg/arrows-to-right.svg" alt="Arrows to right" class="arrows-to-right">
+<main class="grid grid-cols-12 h-screen overflow-hidden" x-data="appData()">
+   <aside class="col-start-1 col-end-3 bg-indigo-500 text-white">
+      <div class="flex items-center justify-center border-solid border-b-2 border-white" @click="setPage(0)">
+         <h1 class="text-2xl text-center p-6 cursor-pointer">«Full-Stack engineer» <br/> Myasishchev Oskar</h1>
+      </div>
 
-      <h1>
-         <span class="profession">Фуллстек-разработчик</span>
-         <span class="name">Оскар Мясищев</span>
-      </h1>
-   </header>
-   <!-- /.header -->
-
-   <main class="main">
-      <section class="section stack">
-         <h2 class="heading section-title">Cтек:</h2>
-         <ul class="simple__list">
-            <li>HTML5 / CSS3 / JavaScript</li>
-            <li>PHP7+ / Laravel(5.7+)</li>
-            <li>Python3+ / Django3+</li>
-            <li>React / Redux</li>
-            <li>MongoDB / MySQL / MariaDB</li>
+      <div class="text-xl">
+         <ul class="p-5 py-8">
+            <li class="mb-3 cursor-pointer" @click="setPage(1)"><i class="fa fa-address-card mr-3"></i>About me</li>
+            <li class="mb-3 cursor-pointer" @click="setPage(2)"><i class="fa fa-flask mr-3"></i>Technologies</li>
+            <li class="mb-3 cursor-pointer" @click="setPage(3)"><i class="fa fa-paper-plane-o mr-3"></i>Projects</li>
+            <li class="mb-3 cursor-pointer" @click="setPage(4)"><i class="fa fa-book mr-3"></i>Education</li>
+            <li class="cursor-pointer" @click="setPage(5)"><i class="fa fa-envelope-o mr-3"></i>Contacts</li>
          </ul>
-      </section>
-      <!-- /.stack -->
+      </div>
+   </aside>
 
-      <section class="section about-me">
-         <h2 class="heading section-title">Обо мне:</h2>
-         <ul class="simple__list">
-            <li>
-               Верстаю по стандартам HTML5 под различные экраны девайсов и браузеры. Пишу по БЭМ. Использую
-               CSS-фреймворки как Bootstrap и Tailwind. Умею работать с препроцессорами SASS/SCSS и Less. Использую SCSS.
-            </li>
-            <li>Программирую на чистом JavaScript, придерживаюсь новых стандартов при разработке.</li>
-            <li>Для приложений использую WebPack, для простых сайтов использую Gulp.</li>
-            <li>Отлично дружу с Git и GitHub, понимаю концепции правильного оформления репозитория и работы с ветками.</li>
-            <li>Верстаю из Adobe Photoshop, Avocode и Figma. Хорошо работаю в этих программах.</li>
-            <li>
-               Верстаю лендинги, многостраничники, интернет-магазины, приложения.
-               Верстал и «натягивал» вёрстку на WordPress и OpenCart.
-               Разрабатываю на Laravel, есть опыт работы с Django.
-               Для веб-приложений использую React для клиентской части.
-            </li>
-            <li>Умею работать с MySQL и MongoDB.</li>
-            <li>Умею настраивать окружение LEMP и LAMP, работать с серверами на CentOS и Ubuntu в консоли.</li>
-            <li>Есть опыт работы с Docker</li>
-            <li>Есть опыт работы с Sentry, для поиска backend-багов</li>
-            <li>Понимаю как работает браузер и анимация, как правильно следить за кодом и оформлять иерархию проекта, умею оптимизировать код. Документирую и комментирую свой код, забочусь о разработчиках, которые возможно будут поддерживать мой код.</li>
-         </ul>
-      </section>
-      <!-- /.about-me -->
+   <section class="col-start-3 col-end-13">
+      <div class="flex h-screen flex-col items-center justify-center" x-transition.duration.650ms
+           x-show="currentPage === 0">
+         <h2 class="font-bold text-5xl">Hello, my name is <span class="text-indigo-500">Oskar</span>!</h2>
+         <p class="text-2xl">
+            Please select
+            <span class="text-indigo-500 underline">interesting page</span>
+            on sidebar on left side
+         </p>
+         <div class="text-5xl text-indigo-500"><i class="fa fa-hand-o-left"></i></div>
+      </div>
 
-      <section class="section projects">
-         <h2 class="heading section-title">Работы:</h2>
-         <dl class="definition">
-            <dt><a href="https://optica-ot-gleba.ru">Оптика от Глеба</a></dt>
-            <dd>
-               Интернет-магазин. Верстка по дизайн-макету из Photoshop и натяжка на OpenCart, подключение
-               необходимых модулей. Серверное администрирование
-            </dd>
-         </dl>
-         <dl class="definition">
-            <dt><a href="http://os-component.ru">OS Component</a></dt>
-            <dd>
-               Сервисный центр. Вёрстка по дизайн-макету из Figma, разработка на PHP с использованием фреймворка
-               Laravel 8. Разработка админ-панели, интеграция с 1C. Подключение необходимых модулей.
-            </dd>
-         </dl>
-      </section>
-      <!-- /.projects -->
+      <div class="flex h-screen flex-col items-center justify-center p-16" x-transition.duration.650ms
+           x-show="currentPage === 1">
+         <h2 class="font-bold text-5xl text-indigo-500 mb-5 text-center">
+            <i class="fa fa-user-o"></i>
+            <br/>
+            About me
+         </h2>
+         <p class="text-2xl mb-3 text-center">
+            Меня зовут Мясищев Оскар, я занимаюсь профессиональной веб-разработкой. В мой рабочий стек входит
+            множетсво технологий и регулярно он совершенствуется и расширяется. Я свободно перехожу на современные
+            технологии и дружелюбно к ним отношусь. Люблю веб-разработку за обширный выбор фреймворков и языков
+            программирования. В веб-разработке с конца 2020 года, вдохновили меня пары программирования в колледже и
+            десткая любовь к компьютерам.
+         </p>
 
-      <section class="section projects">
-         <h2 class="heading section-title">Курсы и обучение:</h2>
-         <dl class="definition">
-            <dt><a href="https://skillcrucial.com/ru">Skillcrucial</a></dt>
-            <dd>
-               Full-Stack: React / JS / Node
-               (6 месяцев обучения, продолжается по сей день)
-            </dd>
-         </dl>
-         <dl class="definition">
-            <dt><a href="https://htmlacademy.ru/">HTML Academy</a></dt>
-            <dd>
-               Интерактивные онлай-курсы по программированию веб-интерфейсов
-               (2 месяца обучения, пройдены все 1400 уроков)
-            </dd>
-         </dl>
-         <dl class="definition">
-            <dt><a href="https://areaweb.su/">Areaweb</a></dt>
-            <dd>
-               Laravel 8 - лучший PHP фреймворк
-               (Обучение только началось)
-            </dd>
-         </dl>
-      </section>
-   </main>
-   <!-- /.main -->
+         <hr class="h-1 w-36 bg-indigo-500 mb-8"/>
 
-   <footer class="footer">
-      <div class="footer__container">
-         <div class="contacts">
-            <h2 class="heading">Контакты:</h2>
-            <ul class="contacts__list">
-               <li><span class="text-blue">Моб.:</span> <a href="tel:+79786523042">+7 (978) 652-30-42</a></li>
-               <li><span class="text-blue">E-mail:</span> <a href="mailto:dexite@list.ru">dexite@list.ru</a></li>
-            </ul>
-         </div>
+         <p class="text-2xl mb-3 text-center">
+            Моя цель в веб-программировании: Разработать продукт, который будет приносить пользу не только мне, но и
+            окружающим. Существует жгучее желание создать произведение искусства в этой сфере, действительно стоющий
+            проект, который будет вдохновлять не только подрастающее поколение программистов, но и меня в первую
+            очередь.
+         </p>
 
-         <div class="socials">
-            <h2 class="heading">Соц.сети:</h2>
-            <ul class="socials__list">
-               <li><a href="https://t.me/OskarDev"><img src="assets/svg/telegram.svg" alt="https://t.me/OskarDev"></a></li>
-               <li><a href="https://vk.com/oskardev"><img src="assets/svg/vk.svg" alt="https://vk.com/oskardev"></a></li>
-               <li><a href="https://github.com/DARKEXCITE"><img src="assets/svg/git.svg" alt="https://github.com/DARKEXCITE"></a></li>
-               <li><a href="https://stackexchange.com/users/19169063/dexite"><img src="assets/svg/stack.svg" alt="https://stackexchange.com/users/19169063/dexite"></a></li>
-               <li><a href="https://www.linkedin.com/in/oskar-myasishchev-762a611b3/"><img src="assets/svg/linkedin.svg" alt="https://www.linkedin.com/in/oskar-myasishchev-762a611b3/"></a></li>
-            </ul>
+         <hr class="h-1 w-36 bg-indigo-500 mb-8"/>
+
+         <p class="text-2xl mb-3 text-center">
+            Меня привлекают новые технологии и крупные, интересные проекты, я люблю испытывать себя и сталкиваться с
+            более сложными задачами, чем вчера. «Вижу задачу - решаю её». Я не знаю слова «Не могу» или «Тяжело», это
+            не про меня. В IT ещё не существовует такой цели или задачи, которую невозможно было бы достичь или решить!
+         </p>
+
+         <hr class="h-1 w-36 bg-indigo-500 mb-8"/>
+
+         <p class="text-2xl mb-3 text-center">
+            Я не только одинокий волк, но и командный игрок, за всю свою карьеру не допустил ни одного конфликта. В
+            любой ситуации можно договориться и прийти к компромиссу. Я восхищаюсь и ценю работу каждого члена
+            команды, если нет друзей и поддержки, если нет единомышленников, то и не будет классного результата!
+         </p>
+      </div>
+
+      <div class="flex h-screen flex-col items-center justify-center p-16" x-transition.duration.650ms
+           x-show="currentPage === 2">
+         <h2 class="font-bold text-5xl text-indigo-500 mb-5">Technologies</h2>
+         <div class="grid grid-cols-6 w-full gap-4">
+            <div class="bg-indigo-100 h-40 rounded shadow-lg flex justify-center items-center text-xl flex-col p-4">
+               <p class="text-center">HTML5 / CSS3</p>
+               <div class="text-yellow-600">
+                  <i class="fa fa-star mr-1"></i>
+                  <i class="fa fa-star mr-1"></i>
+                  <i class="fa fa-star mr-1"></i>
+                  <i class="fa fa-star mr-1"></i>
+                  <i class="fa fa-star"></i>
+               </div>
+            </div>
+
+            <div class="bg-indigo-200 h-40 rounded shadow-lg flex justify-center items-center text-xl flex-col p-4">
+               <p class="text-center">JS</p>
+               <div class="text-yellow-600">
+                  <i class="fa fa-star mr-1"></i>
+                  <i class="fa fa-star mr-1"></i>
+                  <i class="fa fa-star mr-1"></i>
+                  <i class="fa fa-star mr-1"></i>
+                  <i class="fa fa-star-half-o"></i>
+               </div>
+            </div>
+
+            <div class="bg-indigo-300 h-40 rounded shadow-lg flex justify-center items-center text-xl flex-col p-4">
+               <p class="text-center">PHP</p>
+               <div class="text-yellow-600">
+                  <i class="fa fa-star mr-1"></i>
+                  <i class="fa fa-star mr-1"></i>
+                  <i class="fa fa-star mr-1"></i>
+                  <i class="fa fa-star mr-1"></i>
+                  <i class="fa fa-star-half-o"></i>
+               </div>
+            </div>
+
+            <div class="bg-indigo-400 h-40 rounded shadow-lg flex justify-center items-center text-xl text-white flex-col p-4">
+               <p class="text-center">Python</p>
+               <div class="text-yellow-500">
+                  <i class="fa fa-star mr-1"></i>
+                  <i class="fa fa-star mr-1"></i>
+                  <i class="fa fa-star mr-1"></i>
+                  <i class="fa fa-star-half-o mr-1"></i>
+                  <i class="fa fa-star-o"></i>
+               </div>
+            </div>
+
+            <div class="bg-indigo-500 h-40 rounded shadow-lg flex justify-center items-center text-xl text-white flex-col p-4">
+               <p class="text-center">NoSQL DB</p>
+               <div class="text-yellow-500">
+                  <i class="fa fa-star mr-1"></i>
+                  <i class="fa fa-star mr-1"></i>
+                  <i class="fa fa-star mr-1"></i>
+                  <i class="fa fa-star-half-o mr-1"></i>
+                  <i class="fa fa-star-o"></i>
+               </div>
+            </div>
+
+            <div class="bg-indigo-600 h-40 rounded shadow-lg flex justify-center items-center text-xl text-white flex-col p-4">
+               <p class="text-center">SQL DB</p>
+               <div class="text-yellow-400">
+                  <i class="fa fa-star mr-1"></i>
+                  <i class="fa fa-star mr-1"></i>
+                  <i class="fa fa-star mr-1"></i>
+                  <i class="fa fa-star mr-1"></i>
+                  <i class="fa fa-star-o"></i>
+               </div>
+            </div>
+
+            <div class="bg-indigo-200 h-40 rounded shadow-lg flex justify-center items-center text-xl flex-col p-4">
+               <p class="text-center">Bootstrap / Tailwind</p>
+               <div class="text-yellow-600">
+                  <i class="fa fa-star mr-1"></i>
+                  <i class="fa fa-star mr-1"></i>
+                  <i class="fa fa-star mr-1"></i>
+                  <i class="fa fa-star mr-1"></i>
+                  <i class="fa fa-star"></i>
+               </div>
+            </div>
+
+            <div class="bg-indigo-300 h-40 rounded shadow-lg flex justify-center items-center text-xl flex-col p-4">
+               <p class="text-center">React / Vue / Alpine</p>
+               <div class="text-yellow-600">
+                  <i class="fa fa-star mr-1"></i>
+                  <i class="fa fa-star mr-1"></i>
+                  <i class="fa fa-star mr-1"></i>
+                  <i class="fa fa-star mr-1"></i>
+                  <i class="fa fa-star"></i>
+               </div>
+            </div>
+
+            <div class="bg-indigo-400 h-40 rounded shadow-lg flex justify-center items-center text-xl text-white flex-col p-4">
+               <p class="text-center">Laravel + Livewire</p>
+               <div class="text-yellow-500">
+                  <i class="fa fa-star mr-1"></i>
+                  <i class="fa fa-star mr-1"></i>
+                  <i class="fa fa-star mr-1"></i>
+                  <i class="fa fa-star mr-1"></i>
+                  <i class="fa fa-star"></i>
+               </div>
+            </div>
+
+            <div class="bg-indigo-500 h-40 rounded shadow-lg flex justify-center items-center text-xl text-white flex-col p-4">
+               <p class="text-center">Django / FastAPI</p>
+               <div class="text-yellow-500">
+                  <i class="fa fa-star mr-1"></i>
+                  <i class="fa fa-star mr-1"></i>
+                  <i class="fa fa-star mr-1"></i>
+                  <i class="fa fa-star-half-o mr-1"></i>
+                  <i class="fa fa-star-o"></i>
+               </div>
+            </div>
+
+            <div class="bg-indigo-600 h-40 rounded shadow-lg flex justify-center items-center text-xl text-white flex-col p-4">
+               <p class="text-center">Mongo</p>
+               <div class="text-yellow-400">
+                  <i class="fa fa-star mr-1"></i>
+                  <i class="fa fa-star mr-1"></i>
+                  <i class="fa fa-star mr-1"></i>
+                  <i class="fa fa-star-half-o mr-1"></i>
+                  <i class="fa fa-star-o"></i>
+               </div>
+            </div>
+
+            <div class="bg-indigo-600 h-40 rounded shadow-lg flex justify-center items-center text-xl text-white flex-col p-4">
+               <p class="text-center">MySQL / PostgreSQL</p>
+               <div class="text-yellow-400">
+                  <i class="fa fa-star mr-1"></i>
+                  <i class="fa fa-star mr-1"></i>
+                  <i class="fa fa-star mr-1"></i>
+                  <i class="fa fa-star mr-1"></i>
+                  <i class="fa fa-star-o"></i>
+               </div>
+            </div>
+
+            <div class="bg-indigo-300 h-40 rounded shadow-lg flex justify-center items-center text-xl flex-col p-4">
+               <p class="text-center">Git / GitHub / BitBucket</p>
+               <div class="text-yellow-600">
+                  <i class="fa fa-star mr-1"></i>
+                  <i class="fa fa-star mr-1"></i>
+                  <i class="fa fa-star mr-1"></i>
+                  <i class="fa fa-star mr-1"></i>
+                  <i class="fa fa-star-half-o"></i>
+               </div>
+            </div>
+
+            <div class="bg-indigo-400 h-40 rounded shadow-lg flex justify-center items-center text-xl text-white flex-col p-4">
+               <p class="text-center">AWS (EC2, S3, Lambda)</p>
+               <div class="text-yellow-500">
+                  <i class="fa fa-star mr-1"></i>
+                  <i class="fa fa-star mr-1"></i>
+                  <i class="fa fa-star mr-1"></i>
+                  <i class="fa fa-star-o mr-1"></i>
+                  <i class="fa fa-star-o"></i>
+               </div>
+            </div>
+
+            <div class="bg-indigo-500 h-40 rounded shadow-lg flex justify-center items-center text-xl text-white flex-col p-4">
+               <p class="text-center">Linux (Ubuntu) / Windows</p>
+               <div class="text-yellow-500">
+                  <i class="fa fa-star mr-1"></i>
+                  <i class="fa fa-star mr-1"></i>
+                  <i class="fa fa-star mr-1"></i>
+                  <i class="fa fa-star mr-1"></i>
+                  <i class="fa fa-star-half-o"></i>
+               </div>
+            </div>
+
+            <div class="bg-indigo-600 h-40 rounded shadow-lg flex justify-center items-center text-xl text-white flex-col p-4">
+               <p class="text-center">Figma / Avocode / Photoshop</p>
+               <div class="text-yellow-400">
+                  <i class="fa fa-star mr-1"></i>
+                  <i class="fa fa-star mr-1"></i>
+                  <i class="fa fa-star mr-1"></i>
+                  <i class="fa fa-star mr-1"></i>
+                  <i class="fa fa-star"></i>
+               </div>
+            </div>
+
+            <div class="bg-indigo-600 h-40 rounded shadow-lg flex justify-center items-center text-xl text-white flex-col p-4">
+               <p class="text-center">WebPack / Gulp</p>
+               <div class="text-yellow-400">
+                  <i class="fa fa-star mr-1"></i>
+                  <i class="fa fa-star mr-1"></i>
+                  <i class="fa fa-star mr-1"></i>
+                  <i class="fa fa-star mr-1"></i>
+                  <i class="fa fa-star-half-o"></i>
+               </div>
+            </div>
+
+            <div class="bg-indigo-600 h-40 rounded shadow-lg flex justify-center items-center text-xl text-white flex-col p-4">
+               <p class="text-center">CSS - preprocessors</p>
+               <div class="text-yellow-400">
+                  <i class="fa fa-star mr-1"></i>
+                  <i class="fa fa-star mr-1"></i>
+                  <i class="fa fa-star mr-1"></i>
+                  <i class="fa fa-star mr-1"></i>
+                  <i class="fa fa-star"></i>
+               </div>
+            </div>
+
+            <div class="bg-indigo-400 h-40 rounded shadow-lg flex justify-center items-center text-xl text-white flex-col p-4">
+               <p class="text-center">Sentry</p>
+               <div class="text-yellow-500">
+                  <i class="fa fa-star mr-1"></i>
+                  <i class="fa fa-star mr-1"></i>
+                  <i class="fa fa-star mr-1"></i>
+                  <i class="fa fa-star-o mr-1"></i>
+                  <i class="fa fa-star-o"></i>
+               </div>
+            </div>
+
+            <div class="bg-indigo-500 h-40 rounded shadow-lg flex justify-center items-center text-xl text-white flex-col p-4">
+               <p class="text-center">WordPress</p>
+               <div class="text-yellow-500">
+                  <i class="fa fa-star mr-1"></i>
+                  <i class="fa fa-star mr-1"></i>
+                  <i class="fa fa-star mr-1"></i>
+                  <i class="fa fa-star mr-1"></i>
+                  <i class="fa fa-star-half-o"></i>
+               </div>
+            </div>
+
+            <div class="bg-indigo-600 h-40 rounded shadow-lg flex justify-center items-center text-xl text-white flex-col p-4">
+               <p class="text-center">OpenCart</p>
+               <div class="text-yellow-400">
+                  <i class="fa fa-star mr-1"></i>
+                  <i class="fa fa-star mr-1"></i>
+                  <i class="fa fa-star mr-1"></i>
+                  <i class="fa fa-star mr-1"></i>
+                  <i class="fa fa-star-half-o"></i>
+               </div>
+            </div>
+
+            <div class="bg-indigo-600 h-40 rounded shadow-lg flex justify-center items-center text-xl text-white flex-col p-4">
+               <p class="text-center">Design patterns</p>
+               <div class="text-yellow-400">
+                  <i class="fa fa-star mr-1"></i>
+                  <i class="fa fa-star mr-1"></i>
+                  <i class="fa fa-star mr-1"></i>
+                  <i class="fa fa-star mr-1"></i>
+                  <i class="fa fa-star"></i>
+               </div>
+            </div>
+
+            <div class="bg-indigo-600 h-40 rounded shadow-lg flex justify-center items-center text-xl text-white flex-col p-4">
+               <p class="text-center">Docker</p>
+               <div class="text-yellow-400">
+                  <i class="fa fa-star mr-1"></i>
+                  <i class="fa fa-star mr-1"></i>
+                  <i class="fa fa-star mr-1"></i>
+                  <i class="fa fa-star mr-1"></i>
+                  <i class="fa fa-star-o"></i>
+               </div>
+            </div>
+
+            <div class="bg-indigo-600 h-40 rounded shadow-lg flex justify-center items-center text-xl text-white flex-col p-4">
+               <p class="text-center">ESLint / Prettier / Babel</p>
+               <div class="text-yellow-400">
+                  <i class="fa fa-star mr-1"></i>
+                  <i class="fa fa-star mr-1"></i>
+                  <i class="fa fa-star mr-1"></i>
+                  <i class="fa fa-star mr-1"></i>
+                  <i class="fa fa-star-half-o"></i>
+               </div>
+            </div>
          </div>
       </div>
 
-      <div class="data">2021 г.</div>
-   </footer>
-   <!-- /.footer -->
+      <div class="flex h-screen flex-col items-center justify-center p-16" x-transition.duration.650ms
+           x-show="currentPage === 3">
+         <h2 class="font-bold text-5xl text-indigo-500">Projects</h2>
+      </div>
 
-   <script src="script.js"></script>
+      <div class="flex h-screen flex-col items-center justify-center p-16" x-transition.duration.650ms
+           x-show="currentPage === 4">
+         <h2 class="font-bold text-5xl text-indigo-500">Education</h2>
+      </div>
+
+      <div class="flex h-screen flex-col items-center justify-center p-16" x-transition.duration.650ms
+           x-show="currentPage === 5">
+         <h2 class="font-bold text-5xl text-indigo-500">Contacts</h2>
+      </div>
+   </section>
+</main>
+
+<script src="//unpkg.com/alpinejs" defer></script>
+<script type="text/javascript">
+    window.appData = () => ({
+        currentPage: 2,
+
+        setPage(page) {
+            // window.location.href = `${window.location.origin}${window.location.pathname}?page=${page}`
+            this.currentPage = +page
+        },
+
+        initdg() {
+            window.location.href.split('?').forEach(param => {
+                if (param.includes('page')) {
+                    const pageNum = param.split('=')[1]
+                    this.currentPage = +pageNum
+                }
+            })
+        }
+    })
+</script>
 </body>
 </html>
